@@ -1,0 +1,34 @@
+================================================================
+  RENIBO BOUW — FOTO'S TOEVOEGEN
+================================================================
+
+Plaats je foto's in DEZE map (assets/img/) met EXACT de
+onderstaande bestandsnamen. Zodra een bestand hier staat,
+verschijnt de foto automatisch op de website.
+(Geen foto = nette grijze plaatshouder met de bestandsnaam erin.)
+
+Gebruik bij voorkeur .jpg, niet te zwaar (max ~400 KB per foto).
+
+----------------------------------------------------------------
+BESTANDSNAAM            WAAR OP DE SITE              FORMAAT (breed x hoog)
+----------------------------------------------------------------
+home-banner.jpg         Home – grote sfeerfoto       1200 x 525  (liggend)
+vakman.jpg              Kader "Wij bouwen mee..."    600 x 600   (vierkant)
+                        (komt op meerdere pagina's)
+team.jpg                Over Renibo – teamfoto       1200 x 525  (liggend)
+
+project-1.jpg           Projecten – tegel 1          800 x 600
+project-2.jpg           Projecten – tegel 2          800 x 600
+project-3.jpg           Projecten – tegel 3          800 x 600
+project-4.jpg           Projecten – tegel 4          800 x 600
+project-5.jpg           Projecten – tegel 5          800 x 600
+project-6.jpg           Projecten – tegel 6          800 x 600
+
+logo.png                (optioneel) eigen logo       transparante PNG
+contact-map.jpg         (optioneel) kaart/ligging    1200 x 525
+----------------------------------------------------------------
+
+TIP: je mag ook meer projectfoto's toevoegen. Stuur ze gewoon
+door, dan voeg ik extra tegels toe op de Projecten-pagina.
+
+Vragen of meer foto's? Laat het weten, dan zet ik ze erin.

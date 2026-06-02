@@ -1,0 +1,10 @@
+# Werkbestanden — horen niet bij de eigenlijke website
+_montage/
+_cropped/
+_stock/
+_tools/
+
+# Systeembestanden
+.DS_Store
+Thumbs.db
+*.log
