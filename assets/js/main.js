@@ -46,15 +46,15 @@
   /* ====================== DIENSTEN-DATA ====================== */
   var PAD = "assets/img/";
   var DIENSTEN = [
-    { id: "dakwerken",    titel: "Dakwerken",            kort: "Hellende en platte daken, nieuw of in renovatie.", punten: ["Pannen- en leiendaken", "Platte daken (EPDM, roofing)", "Dakgoten en zinkwerk", "Dakherstellingen"], fotos: ["dakwerken-1","dakwerken-2","dakwerken-3","dakwerken-4","dakwerken-5","dakwerken-6","dakwerken-7","dakwerken-8","dakwerken-9","dakwerken-10"] },
+    { id: "dakwerken",    titel: "Dakwerken",            kort: "Hellende en platte daken, nieuw of in renovatie.", punten: ["Pannen- en leiendaken", "Platte daken (EPDM, roofing)", "Dakgoten en zinkwerk", "Dakherstellingen"], fotos: ["dakwerken-1","dakwerken-2","dakwerken-3","dakwerken-4","dakwerken-5","dakwerken-6","dakwerken-7","dakwerken-8"] },
     { id: "gevelwerken",  titel: "Gevelwerken",          kort: "Een strakke, beter geïsoleerde gevel.", punten: ["Gevelbekleding", "Sierpleister en crepi", "Gevelrenovatie", "Gevelreiniging"], fotos: ["gevel-1","gevel-2","gevel-3","gevel-4","gevel-5","gevel-6"] },
     { id: "isolatie",     titel: "Isolatie & zolderafwerking", kort: "Isoleren en afwerken van dak en zolder.", punten: ["Dakisolatie", "Muur- en vloerisolatie", "Zolderinrichting", "Zolderafwerking"], fotos: ["isolatie-1","isolatie-2","isolatie-3","isolatie-4","isolatie-5","isolatie-6","isolatie-7","isolatie-8"] },
-    { id: "ramen-deuren", titel: "Ramen, deuren & veluxen", kort: "Plaatsen van ramen, deuren en dakvensters.", punten: ["Ramen en deuren", "Velux-dakvensters", "Lichtkoepels"], fotos: ["ramen-1","ramen-2","ramen-3","ramen-4","ramen-5"] },
-    { id: "lichtstraten", titel: "Lichtstraten",         kort: "Maximaal daglicht met lichtstraten en koepels.", punten: ["Lichtstraten op maat", "Lichtkoepels", "Glasdaken"], fotos: ["licht-1","licht-2","licht-3","licht-4"] },
+    { id: "ramen-deuren", titel: "Ramen, deuren & veluxen", kort: "Plaatsen van ramen, deuren en dakvensters.", punten: ["Ramen en deuren", "Velux-dakvensters", "Lichtkoepels"], fotos: ["ramen-1","ramen-2","ramen-3","ramen-4"] },
+    { id: "lichtstraten", titel: "Lichtstraten",         kort: "Maximaal daglicht met lichtstraten en koepels.", punten: ["Lichtstraten op maat", "Lichtkoepels", "Glasdaken"], fotos: ["licht-1"] },
     { id: "zonnepanelen", titel: "Zonnepanelen",         kort: "Zonnepanelen voor een lagere energiefactuur.", punten: ["Plaatsing op hellend en plat dak", "Advies en afwerking"], fotos: ["zon-1","zon-2","zon-3","zon-4","zon-5"] },
-    { id: "afwerking",    titel: "Afwerking & plafonds", kort: "Vakkundige binnenafwerking.", punten: ["Pleisterwerk", "Plafonds", "Vloeren", "Algemene afwerking"], fotos: ["afwerking-1","afwerking-2","afwerking-3","afwerking-4","afwerking-5","afwerking-6"] },
+    { id: "afwerking",    titel: "Afwerking & plafonds", kort: "Vakkundige binnenafwerking.", punten: ["Pleisterwerk", "Plafonds", "Vloeren", "Algemene afwerking"], fotos: ["afwerking-1","afwerking-2","afwerking-3","afwerking-4"] },
     { id: "asbest",       titel: "Asbestverwijdering",   kort: "Veilige verwijdering en vernieuwing.", punten: ["Verwijderen asbestdaken", "Vernieuwen dakbedekking", "Conform de regelgeving"], fotos: ["asbest-1","asbest-2","asbest-3","asbest-4"] },
-    { id: "ontmossen",    titel: "Ontmossen van daken",  kort: "Reinigen en ontmossen van uw dak.", punten: ["Ontmossen", "Reinigen", "Beschermende behandeling"], fotos: ["ontmossen-1","ontmossen-2","ontmossen-3"] },
+    { id: "ontmossen",    titel: "Ontmossen van daken",  kort: "Reinigen en ontmossen van uw dak.", punten: ["Ontmossen", "Reinigen", "Beschermende behandeling"], fotos: ["ontmossen-1","ontmossen-2","ontmossen-3","ontmossen-4"] },
     { id: "tuinaanleg",   titel: "Tuinaanleg & paden",   kort: "Aanleg van paden en buitenverharding.", punten: ["Tuinpaden", "Opritten", "Verhardingen"], fotos: ["tuin-1","tuin-2","tuin-3","tuin-4"] },
     { id: "opruiming",    titel: "Opruim- & afbraakwerken", kort: "Opruim-, sloop- en afbraakwerken.", punten: ["Afbraakwerken", "Werf opruimen", "Afvoer puin"], fotos: ["opruiming-1","opruiming-2","opruiming-3","opruiming-4"] },
     { id: "ontruiming",   titel: "Opruiming na brand of overlijden", kort: "Discrete en volledige ontruiming en opruiming.", punten: ["Ontruiming na brand", "Leegmaken bij overlijden", "Sorteren en afvoeren", "Discreet en respectvol"], fotos: ["ontruiming-1","ontruiming-2","ontruiming-3","ontruiming-4"] }
@@ -73,7 +73,7 @@
       a.setAttribute("aria-label", d.titel);
       a.innerHTML =
         '<span class="dienst-card__img"><img src="' + PAD + d.fotos[0] + '.jpg" alt="' + d.titel + '" loading="lazy">' +
-        '<span class="dienst-card__count">' + d.fotos.length + " foto’s</span></span>" +
+        '<span class="dienst-card__count">' + d.fotos.length + (d.fotos.length === 1 ? " foto" : " foto’s") + "</span></span>" +
         '<span class="dienst-card__body"><h3>' + d.titel + "</h3><p>" + d.kort + "</p>" +
         '<span class="dienst-card__more">Meer info ' + ARROW + "</span></span>";
       grid.appendChild(a);
@@ -100,8 +100,7 @@
       '<button type="button" class="dienst-banner ph" data-i="0"><img src="' + PAD + d.fotos[0] + '.jpg" alt="' + d.titel + '"></button>' +
       "<h2>Wat wij doen</h2>" +
       '<ul class="bullets">' + punten + "</ul>" +
-      "<h2>Realisaties in beeld</h2>" +
-      '<div class="gallery-grid">' + thumbs + "</div>" +
+      (thumbs ? "<h2>Realisaties in beeld</h2>" + '<div class="gallery-grid">' + thumbs + "</div>" : "") +
       '<div class="dienst-detail__cta"><a class="btn btn--lg" href="contact.html">Offerte aanvragen</a></div>';
 
     // markeer actieve dienst in de sidebar
