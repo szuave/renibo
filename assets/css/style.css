@@ -301,6 +301,11 @@ body.lb-open { overflow: hidden; }
 .home-cta h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .home-cta p { color: rgba(255,255,255,.9); margin-top: 6px; }
 
+/* Google Maps embed (contact) */
+.map-embed { aspect-ratio: 16/7; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 600px) { .map-embed { aspect-ratio: 4/3; } }
+
 /* ============================== KLEINE TELEFOONS (≤480px) ============================== */
 html, body { overflow-x: hidden; }
 

@@ -69,7 +69,7 @@
     DIENSTEN.forEach(function (d) {
       var a = document.createElement("a");
       a.className = "dienst-card";
-      a.href = "dienst.html?d=" + d.id;
+      a.href = d.id + ".html";
       a.setAttribute("aria-label", d.titel);
       a.innerHTML =
         '<span class="dienst-card__img"><img src="' + PAD + d.fotos[0] + '.jpg" alt="' + d.titel + '" loading="lazy">' +
@@ -80,56 +80,27 @@
     });
   }
 
-  /* ====================== DIENST-DETAILPAGINA ====================== */
-  var detail = document.getElementById("dienstDetail");
-  if (detail) {
-    var d = byId(getParam("d")) || DIENSTEN[0];
-    document.title = d.titel + " — Renibo Bouw";
-
-    // breadcrumb + titel + intro + punten + galerij
-    var punten = d.punten.map(function (p) { return "<li>" + p + "</li>"; }).join("");
-    var thumbs = d.fotos.slice(1).map(function (f, k) {
-      var i = k + 1;
-      return '<button type="button" data-i="' + i + '"><img src="' + PAD + f + '.jpg" alt="' + d.titel + " foto " + (i + 1) + '" loading="lazy"></button>';
-    }).join("");
-
-    detail.innerHTML =
-      '<p class="crumbs"><a href="diensten.html">Diensten</a> › ' + d.titel + "</p>" +
-      "<h1>" + d.titel + "</h1>" +
-      '<p class="lead-text">' + d.kort + "</p>" +
-      '<button type="button" class="dienst-banner ph" data-i="0"><img src="' + PAD + d.fotos[0] + '.jpg" alt="' + d.titel + '"></button>' +
-      "<h2>Wat wij doen</h2>" +
-      '<ul class="bullets">' + punten + "</ul>" +
-      (thumbs ? "<h2>Realisaties in beeld</h2>" + '<div class="gallery-grid">' + thumbs + "</div>" : "") +
-      '<div class="dienst-detail__cta"><a class="btn btn--lg" href="contact.html">Offerte aanvragen</a></div>';
-
-    // markeer actieve dienst in de sidebar
-    document.querySelectorAll('.svc-list a').forEach(function (a) {
-      if (a.getAttribute("href") === "dienst.html?d=" + d.id) a.classList.add("active");
+  /* ====================== FOTOGALERIJ-LIGHTBOX (statische dienstpaginas) ====================== */
+  var lb = document.getElementById("lightbox");
+  var lbItems = Array.prototype.slice.call(document.querySelectorAll(".lb-item"));
+  if (lb && lbItems.length) {
+    var lbImg = lb.querySelector(".lightbox__img");
+    var lbCount = lb.querySelector(".lightbox__count");
+    var srcs = lbItems.map(function (el) { return el.getAttribute("data-full"); });
+    var idx = 0;
+    function lbShow(i) { idx = (i + srcs.length) % srcs.length; lbImg.src = srcs[idx]; if (lbCount) lbCount.textContent = (idx + 1) + " / " + srcs.length; }
+    function lbOpen(i) { lbShow(i); lb.hidden = false; document.body.classList.add("lb-open"); }
+    function lbClose() { lb.hidden = true; document.body.classList.remove("lb-open"); }
+    lbItems.forEach(function (el, i) { el.addEventListener("click", function (e) { e.preventDefault(); lbOpen(i); }); });
+    var cl = lb.querySelector(".lightbox__close"); if (cl) cl.addEventListener("click", lbClose);
+    var pv = lb.querySelector(".lb-prev"); if (pv) pv.addEventListener("click", function () { lbShow(idx - 1); });
+    var nx = lb.querySelector(".lb-next"); if (nx) nx.addEventListener("click", function () { lbShow(idx + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) lbClose(); });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") lbClose();
+      else if (e.key === "ArrowLeft") lbShow(idx - 1);
+      else if (e.key === "ArrowRight") lbShow(idx + 1);
     });
-
-    // lightbox
-    var lb = document.getElementById("lightbox");
-    if (lb) {
-      var lbImg = lb.querySelector(".lightbox__img");
-      var lbCount = lb.querySelector(".lightbox__count");
-      var idx = 0;
-      function show(i) { idx = (i + d.fotos.length) % d.fotos.length; lbImg.src = PAD + d.fotos[idx] + ".jpg"; lbCount.textContent = (idx + 1) + " / " + d.fotos.length; }
-      function open(i) { show(i); lb.hidden = false; document.body.classList.add("lb-open"); }
-      function close() { lb.hidden = true; document.body.classList.remove("lb-open"); }
-      detail.querySelectorAll("[data-i]").forEach(function (b) {
-        b.addEventListener("click", function () { open(parseInt(b.dataset.i, 10)); });
-      });
-      lb.querySelector(".lightbox__close").addEventListener("click", close);
-      lb.querySelector(".lb-prev").addEventListener("click", function () { show(idx - 1); });
-      lb.querySelector(".lb-next").addEventListener("click", function () { show(idx + 1); });
-      lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
-      document.addEventListener("keydown", function (e) {
-        if (lb.hidden) return;
-        if (e.key === "Escape") close();
-        else if (e.key === "ArrowLeft") show(idx - 1);
-        else if (e.key === "ArrowRight") show(idx + 1);
-      });
-    }
   }
 })();
