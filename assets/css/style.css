@@ -301,6 +301,17 @@ body.lb-open { overflow: hidden; }
 .home-cta h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .home-cta p { color: rgba(255,255,255,.9); margin-top: 6px; }
 
+/* Contact: bereikbaar via telefoon/e-mail */
+.contact-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 8px; }
+@media (max-width: 560px) { .contact-cta { grid-template-columns: 1fr; } }
+.contact-cta__item { display: flex; align-items: center; gap: 16px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s, border-color .2s; }
+.contact-cta__item:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(11,30,28,.4); border-color: var(--teal); }
+.contact-cta__item .ic { flex: none; width: 54px; height: 54px; border-radius: 12px; background: var(--teal-light); color: var(--teal-dark); display: grid; place-items: center; }
+.contact-cta__item .ic svg { width: 26px; height: 26px; }
+.contact-cta__item .t { display: flex; flex-direction: column; }
+.contact-cta__item .t b { font-family: var(--font-head); font-size: 1.02rem; color: var(--ink); }
+.contact-cta__item .t span { color: var(--teal-dark); font-weight: 700; font-size: 1.08rem; word-break: break-word; }
+
 /* Google Maps embed (contact) */
 .map-embed { aspect-ratio: 16/7; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
 .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
